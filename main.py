@@ -2,9 +2,10 @@ import os
 import json
 import requests
 
-proxy_url = "http://proxy.server:3128"
-os.environ["http_proxy"] = proxy_url
-os.environ["https_proxy"] = proxy_url
+if "PYTHONANYWHERE_DOMAIN" in os.environ:
+    proxy_url = "http://proxy.server:3128"
+    os.environ["http_proxy"] = proxy_url
+    os.environ["https_proxy"] = proxy_url
 
 OWM_ENDPOINT = "https://api.openweathermap.org/data/2.5/forecast"
 api_key = os.environ.get("OWM_API_KEY")
